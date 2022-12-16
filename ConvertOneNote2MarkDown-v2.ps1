@@ -814,7 +814,7 @@ Function New-SectionGroupConversionConfig {
                             }
                             "$( $pathWithoutExtension | Truncate-PathFileName -Length ($config['mdFileNameAndFolderNameMaxLength']['value'] - 3) ).md" # Truncate to no more than 255 characters so we don't hit the file name limit on Windows / Linux
                         }
-                        $pageCfg['filePathLong'] = "\\?\$( $pageCfg['filePathNormal'] )" # A non-Win32 path. Prefixing with '\\?\' allows Windows Powershell <= 5 (based on Win32) to support long absolute paths.
+                        $pageCfg['filePathLong'] = "$( $pageCfg['filePathNormal'] )" # A non-Win32 path. Prefixing with '\\?\' allows Windows Powershell <= 5 (based on Win32) to support long absolute paths.
                         $pageCfg['filePath'] = if ($PSVersionTable.PSVersion.Major -le 5) {
                             $pageCfg['filePathLong'] # Add support for long paths on Powershell 5
                         }else {
